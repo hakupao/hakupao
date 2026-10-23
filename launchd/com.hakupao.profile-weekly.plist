@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Install: cp launchd/com.hakupao.profile-weekly.plist ~/Library/LaunchAgents/ && launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.hakupao.profile-weekly.plist -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.hakupao.profile-weekly</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/bojiangzhang/Project/hakupao/scripts/weekly.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>WORKLOG_ROOT</key>
+    <string>/Users/bojiangzhang/Project/worklog</string>
+  </dict>
+  <!-- Monday 09:05 local time; a run missed while asleep fires on wake. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key>
+    <integer>1</integer>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>5</integer>
+  </dict>
+  <key>RunAtLoad</key>
+  <false/>
+  <key>StandardOutPath</key>
+  <string>/Users/bojiangzhang/Library/Logs/hakupao-profile-weekly.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/bojiangzhang/Library/Logs/hakupao-profile-weekly.log</string>
+</dict>
+</plist>
