@@ -27,10 +27,11 @@ I turn raw oncology study data into **CDISC SDTM** datasets, and build the tooli
 ### 📅 Last week
 
 <!-- weekly:start -->
-<sub>Oct 12 – Oct 18, 2026 · refreshed every Monday from GitHub and <a href="https://github.com/hakupao/worklog-public">worklog</a></sub>
+<sub>Oct 19 – Oct 25, 2026 · refreshed every Monday from GitHub and <a href="https://github.com/hakupao/worklog-public">worklog</a></sub>
 
-- 🔒 548 contributions in private repos
-- 🤖 53 AI agent sessions (Claude Code 44 · Codex 9) · 110 h of agent time over 4 days
+- 📦 Public commits: [**it-passport-learning**](https://github.com/hakupao/it-passport-learning) · 226, [**worklog-public**](https://github.com/hakupao/worklog-public) · 5, [**stoker**](https://github.com/hakupao/stoker) · 3, [**SDTM-Mapping-System**](https://github.com/hakupao/SDTM-Mapping-System) · 1
+- 🔒 262 contributions in private repos
+- 🤖 83 AI agent sessions (Claude Code 74 · Codex 9) · 162 h of agent time over 7 days
 <!-- weekly:end -->
 
 ### ▶️ Try it live
