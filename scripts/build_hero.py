@@ -5,7 +5,7 @@ Edit the copy or palette here, never the generated SVGs.
 """
 from pathlib import Path
 
-W, H = 960, 348
+W, H = 960, 408
 SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans','Hiragino Sans','PingFang SC',Helvetica,Arial,sans-serif"
 MONO = "ui-monospace,SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace"
 
@@ -18,9 +18,9 @@ PALETTES = {
 
 # (stage label, project name, one-line role) in data-flow order
 STAGES = [
-    ("01 · AUDIT", "MedAudit", "diff every data drop"),
-    ("02 · PREP", "DataForge", "convert · clean · mask"),
-    ("03 · MAP", "Mapping System", "Excel config → SDTM"),
+    ("01 · PREP", "DataForge", "convert · mask · batch"),
+    ("02 · CONFIG", "SDTS", "versioned configs"),
+    ("03 · MAP", "Mapping System", "config → SDTM · v1.0"),
     ("04 · SPEC", "Spec Forge", "spec workbooks"),
 ]
 
@@ -31,6 +31,7 @@ SINK_X = W - 32 - SINK_W
 GAP = 28
 NODE_W = (SINK_X - (SRC_X + SRC_W) - GAP * (len(STAGES) + 1)) // len(STAGES)
 KNOW_Y = 270
+NEXT_Y = 330
 
 
 def node_x(i):
@@ -96,6 +97,12 @@ def build(p):
         f'<text x="{kx + 140}" y="{KNOW_Y + 28}" class="sans" font-size="13" fill="{p["text"]}">'
         f'<tspan font-weight="700">SDTM Pedia</tspan>'
         f'<tspan fill="{p["muted"]}">  ·  SDTMIG v3.4 · 63 domains · 37,939 CDISC terms · LLM-ready</tspan></text>',
+        # next-generation engine, drawn as a dashed band under the current pipeline
+        f'<rect x="{kx}" y="{NEXT_Y}" width="{kw}" height="46" rx="10" fill="none" stroke="{p["accent"]}" stroke-dasharray="5 4"/>',
+        f'<text x="{kx + 16}" y="{NEXT_Y + 28}" class="mono" font-size="10.5" font-weight="700" letter-spacing=".5" fill="{p["accent"]}">NEXT ENGINE</text>',
+        f'<text x="{kx + 140}" y="{NEXT_Y + 28}" class="sans" font-size="13" fill="{p["text"]}">'
+        f'<tspan font-weight="700">ETLM</tspan>'
+        f'<tspan fill="{p["muted"]}">  ·  visual, config-driven ETL desktop app · Rust + Tauri · building</tspan></text>',
         "</svg>",
     ]
     return "\n".join(out) + "\n"
