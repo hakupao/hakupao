@@ -26,9 +26,14 @@ WORKLOG_CREDS = Path(os.environ.get("WORKLOG_HOME", Path.home() / ".worklog")) /
 AGENT_NAMES = {"claude-code": "Claude Code", "codex": "Codex"}
 MAX_PUBLIC = 4
 
-QUERY = """query($login:String!,$from:DateTime!,$to:DateTime!){user(login:$login){
+QUERY = """query($login:String!,$from:DateTime!,$to:DateTime!){user(login:$login){id
 contributionsCollection(from:$from,to:$to){restrictedContributionsCount
 commitContributionsByRepository(maxRepositories:100){repository{nameWithOwner name url isPrivate}contributions{totalCount}}}}}"""
+
+# Commits by one author on a repository's default branch, within a time range.
+BRANCH_QUERY = """query($owner:String!,$name:String!,$since:GitTimestamp!,$until:GitTimestamp!,$id:ID!){
+repository(owner:$owner,name:$name){defaultBranchRef{target{... on Commit{
+history(since:$since,until:$until,author:{id:$id}){totalCount}}}}}}"""
 
 
 def last_week(today):
@@ -48,16 +53,27 @@ def toml_strings(path):
     return pairs
 
 
-def github(start, end):
+def graphql(query, **fields):
     gh = shutil.which("gh") or "/opt/homebrew/bin/gh"
-    out = subprocess.run(
-        [gh, "api", "graphql", "-f", f"query={QUERY}", "-f", f"login={LOGIN}",
-         "-f", f"from={start.isoformat()}T00:00:00+09:00", "-f", f"to={end.isoformat()}T23:59:59+09:00"],
-        capture_output=True, text=True,
-    )
+    args = [gh, "api", "graphql", "-f", f"query={query}"]
+    for key, value in fields.items():
+        args += ["-f", f"{key}={value}"]
+    out = subprocess.run(args, capture_output=True, text=True)
     if out.returncode != 0:
         sys.exit("weekly: GitHub query failed (gh exit %d)" % out.returncode)
-    cc = json.loads(out.stdout)["data"]["user"]["contributionsCollection"]
+    return json.loads(out.stdout)["data"]
+
+
+def default_branch_commits(name_with_owner, user_id, since, until):
+    owner, name = name_with_owner.split("/", 1)
+    ref = graphql(BRANCH_QUERY, owner=owner, name=name, since=since, until=until, id=user_id)["repository"]["defaultBranchRef"]
+    return ref["target"]["history"]["totalCount"] if ref else 0
+
+
+def github(start, end):
+    since, until = f"{start.isoformat()}T00:00:00+09:00", f"{end.isoformat()}T23:59:59+09:00"
+    user = graphql(QUERY, login=LOGIN, **{"from": since, "to": until})["user"]
+    cc = user["contributionsCollection"]
     # GitHub reports private-repo work only as restrictedContributionsCount (commits, PRs, issues,
     # unnamed), even to the owner's gh token; a private repo that does come back named is summed in too.
     public, private = [], cc["restrictedContributionsCount"]
@@ -67,7 +83,11 @@ def github(start, end):
             continue
         if repo["isPrivate"]:
             private += n
-        else:
+            continue
+        # A contribution count also includes commits on gh-pages, and glassbox publishes a snapshot
+        # commit there every 10 minutes. Count the default branch only, so the number means work done.
+        n = default_branch_commits(repo["nameWithOwner"], user["id"], since, until)
+        if n:
             public.append((repo["name"], repo["url"], n))
     public.sort(key=lambda r: -r[2])
     return public, private

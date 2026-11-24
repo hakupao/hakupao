@@ -14,22 +14,22 @@ I turn raw oncology study data into **CDISC SDTM** datasets, and build the tooli
 | Stage | Project | What it does |
 |---|---|---|
 | Audit | [**MedAudit Diff Watcher**](https://github.com/hakupao/MedAudit-Diff-Watcher) | Watches versioned data drops; row- and field-level CSV diffs in an SQLite audit trail |
-| Prep | [**DataForge Studio**](https://github.com/hakupao/tools_box) | Windows toolbox for conversion, cleaning and masking, for analysts who don't write Python |
+| Prep | [**DataForge Studio**](https://github.com/hakupao/tools_box) | Windows toolbox for format conversion, data masking and batch EDC site entry, for analysts who don't write Python |
 | Map | [**SDTM Mapping System**](https://github.com/hakupao/SDTM-Mapping-System) | One Excel workbook drives a 7-step pipeline to SDTM datasets and an M5 package |
 | Spec | [**SDTM Spec Forge**](https://github.com/hakupao/sdtm-spec-forge) | Rust CLI that writes dataset-spec workbooks against SDTMIG v3.4 and CDISC terminology |
 | Knowledge | [**SDTM Pedia**](https://github.com/hakupao/sdtm-pedia) | 293 Markdown files · 63 domains · 37,939 CDISC terms, searchable by people and LLMs |
 
 ### 🔨 Now building
 
-- A configuration-driven visual ETL platform for clinical data · Rust engine, Tauri + React desktop UI in design
-- A web workspace for authoring and versioning SDTM transformation configs · React · FastAPI · SQLite
+- A configuration-driven visual ETL platform for clinical data · Rust engine with a Tauri + React desktop app · preparation, cleaning and terminology stages built, SDTM output not yet
+- A web workspace for authoring and versioning SDTM transformation configs · React · FastAPI · SQLite · in trial use on a private network
 
 ### 📅 Last week
 
 <!-- weekly:start -->
 <sub>Nov 16 – Nov 22, 2026 · refreshed every Monday from GitHub and <a href="https://github.com/hakupao/worklog-public">worklog</a></sub>
 
-- 📦 Public commits: [**glassbox**](https://github.com/hakupao/glassbox) · 715, [**it-passport-learning**](https://github.com/hakupao/it-passport-learning) · 51, [**tools_box**](https://github.com/hakupao/tools_box) · 7
+- 📦 Public commits: [**glassbox**](https://github.com/hakupao/glassbox) · 111, [**it-passport-learning**](https://github.com/hakupao/it-passport-learning) · 51, [**tools_box**](https://github.com/hakupao/tools_box) · 7
 - 🔒 163 contributions in private repos
 - 🤖 70 AI agent sessions (Claude Code 67 · Codex 3) · 108 h of agent time over 6 days
 <!-- weekly:end -->
@@ -49,14 +49,14 @@ I turn raw oncology study data into **CDISC SDTM** datasets, and build the tooli
       <sub>A work log that writes itself: AI agent sessions to weekly reports in JA / ZH / EN</sub>
     </td>
     <td width="33%" valign="top">
-      <a href="https://kana-bsn.pages.dev"><img src="assets/live/kana.png" alt="Kana reading annotator"></a><br>
+      <a href="https://kana.bojiang.org"><img src="assets/live/kana.png" alt="Kana reading annotator"></a><br>
       <b><a href="https://github.com/hakupao/kana">Kana</a></b><br>
       <sub>Hiragana, katakana or romaji readings for long Japanese text, entirely in the browser</sub>
     </td>
   </tr>
 </table>
 
-Also live: [**IT Passport Learning**](https://itlearn.bojiangz.com), a trilingual (JA / ZH / EN) study app for the Japanese IT Passport exam.
+Also live: [**IT Passport Learning**](https://itlearn.bojiangz.com), a trilingual (JA / ZH / EN) study app for the Japanese IT Passport exam, and [**glassbox**](https://status.bojiang.org), the public snapshot of my dashboard for AI-assisted development.
 
 ### 🛠️ Stack
 
@@ -66,8 +66,8 @@ Also live: [**IT Passport Learning**](https://itlearn.bojiangz.com), a trilingua
 <summary><b>Beyond work</b></summary>
 <br>
 
-- [**ShuttleArena**](https://shuttle-arena-demo.pages.dev): badminton tournaments with lottery draw, scheduling and real-time scoring
-- [**Shuttle Path**](https://shuttle-path.pages.dev): badminton coaching knowledge base and illustrated lesson diaries
+- [**ShuttleArena**](https://shuttle-arena-demo.pages.dev): badminton team tournaments with lottery draw, scheduling, scoring and standings
+- [**Shuttle Path**](https://shuttle-path.pages.dev): badminton coaching notes: technique articles and an illustrated lesson diary
 - [**LatSolar**](https://solar.bojiang.org): solar radiation by latitude, on an interactive 3D globe
 - [**Exchange Atlas**](https://exchange.bojiang.org): live dashboard for six currency pairs across USD, CNY, JPY and AUD
 - [**Japan property workbench**](https://loan.bojiang.org): loan simulation and rental yield analysis for Japanese real estate
