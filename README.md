@@ -66,9 +66,9 @@ I turn raw oncology study data into **CDISC SDTM** datasets and build the toolin
   </tr>
   <tr>
     <td width="33%" valign="top">
-      <a href="https://hail.bojiangz.com"><img src="assets/live/hail.jpg" alt="Hail, a scrolling story"></a><br>
-      <b><a href="https://github.com/hakupao/hail">Hail</a></b><br>
-      <sub>The life of a hailstone as a scrolling, animated story, in three languages</sub>
+      <a href="https://shuttle-arena-demo.pages.dev"><img src="assets/live/shuttle.jpg" alt="ShuttleArena tournament home"></a><br>
+      <b><a href="https://github.com/hakupao/shuttle-arena">ShuttleArena</a></b><br>
+      <sub>Full-stack badminton team tournaments: lottery draw, smart scheduling, scoring and standings</sub>
     </td>
     <td width="33%" valign="top">
       <a href="https://hakupao.github.io/worklog-public/"><img src="assets/live/worklog.jpg" alt="worklog Now page"></a><br>
@@ -76,9 +76,9 @@ I turn raw oncology study data into **CDISC SDTM** datasets and build the toolin
       <sub>A work log that writes itself: AI agent sessions to weekly reports in JA / ZH / EN</sub>
     </td>
     <td width="33%" valign="top">
-      <a href="https://kana.bojiang.org"><img src="assets/live/kana.png" alt="Kana reading annotator"></a><br>
-      <b><a href="https://github.com/hakupao/kana">Kana</a></b><br>
-      <sub>Hiragana, katakana or romaji readings for long Japanese text, entirely in the browser</sub>
+      <a href="https://solar.bojiang.org"><img src="assets/live/solar.jpg" alt="LatSolar 3D globe"></a><br>
+      <b><a href="https://github.com/hakupao/LatSolarLab">LatSolar</a></b><br>
+      <sub>Solar radiation for any place and date, on an interactive 3D globe · Three.js</sub>
     </td>
   </tr>
 </table>
@@ -91,9 +91,9 @@ I turn raw oncology study data into **CDISC SDTM** datasets and build the toolin
 <summary><b>Beyond work</b></summary>
 <br>
 
-- [**ShuttleArena**](https://shuttle-arena-demo.pages.dev): badminton team tournaments with lottery draw, scheduling, scoring and standings
+- [**Kana**](https://kana.bojiang.org): hiragana, katakana or romaji readings for long Japanese text, entirely in the browser
+- [**Hail**](https://hail.bojiangz.com): the life of a hailstone as a scrolling, animated story, in three languages
 - [**Shuttle Path**](https://shuttle-path.pages.dev): badminton coaching notes: technique articles and an illustrated lesson diary
-- [**LatSolar**](https://solar.bojiang.org): solar radiation by latitude, on an interactive 3D globe
 - [**Exchange Atlas**](https://exchange.bojiang.org): live dashboard for six currency pairs across USD, CNY, JPY and AUD
 - [**Japan property workbench**](https://loan.bojiang.org): loan simulation and rental yield analysis for Japanese real estate
 - Contributed: JIS 英数 / かな key support for [TriDog](https://github.com/aoyamashou/TriDog/pull/1), a trilingual input-source switcher
